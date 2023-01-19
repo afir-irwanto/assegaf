@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TotalSkin extends Model
+class Purchase extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
-    protected $table = 'total_skin';
+    protected $table = 'purchases';
     protected $fillable = [
-        'total_skin'
+        'total_purchase','deleted_at'
     ];
 }

@@ -11,7 +11,7 @@ class Skin extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'skin';
+    protected $table = 'skins';
     protected $fillable = [
         'butcher_id','sheet','total_price','meat_grade','total_meat','deleted_at'
     ];

@@ -11,7 +11,7 @@
             <div>Detail Data Butchers</div>
         </div>
         <div class="col-md-6 text-right">
-            <a href="/butcher/create" class="btn btn-primary btn-sm btn-rounded mb-2"><i class="fas fa-plus mr-2"></i> Create</a>
+            <a href="/sales/create" class="btn btn-primary btn-sm btn-rounded mb-2"><i class="fas fa-plus mr-2"></i> Create</a>
         </div>
     </div>
     <div class="table-responsive">

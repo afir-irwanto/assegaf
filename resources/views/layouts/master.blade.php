@@ -137,14 +137,40 @@
                                             <span class="sub-item">Total Skin</span>
                                         </a>
                                     </li>
+                                </ul>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="/butcher" class="collapsed" aria-expanded="false">
-                                <i class="fas fa-money-bill"></i>
+                            <a href="/sales" class="collapsed" aria-expanded="false">
+                                <i class="fas fa-shopping-cart"></i>
                                 <p>Sales</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="#span2" data-toggle="collapse">
+                                <i class="fas fa-money-bill"></i>
+                                <p>Finance</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="span2">
+                                <ul class="nav nav-collapse">
+                                    <li>
+                                        <a href="/purchases_record">
+                                            <span class="sub-item">Purchases</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/sales_record">
+                                            <span class="sub-item">Sales</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/finance_record">
+                                            <span class="sub-item">Finance Record</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -167,7 +193,7 @@
                 <div class="page-inner mt--5">
                     <div class="row mt--2">
                         <div class="col-md-12">
-                        <div class="card full-height">
+                            <div class="card full-height">
                                 @yield('konten')
                             </div>
                         </div>
