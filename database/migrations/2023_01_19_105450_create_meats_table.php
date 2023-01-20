@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSalesTable extends Migration
+class CreateMeatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,18 @@ class CreateSalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sales', function (Blueprint $table) {
+        Schema::create('meats', function (Blueprint $table) {
             $table->id();
-            $table->integer('quantity');
+            $table->unsignedBigInteger('butcher_id');
+            $table->integer('weight');
             $table->integer('price');
+            $table->enum('meat_grade', ['putih','merah']);
             $table->integer('total_price');
             $table->timestamps();
+
             $table->dateTime('deleted_at')->nullable();
+
+            $table->foreign('butcher_id')->references('id')->on('butchers');
         });
     }
 
@@ -30,6 +35,6 @@ class CreateSalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sales');
+        Schema::dropIfExists('meats');
     }
 }

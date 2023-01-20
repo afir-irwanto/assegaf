@@ -1,17 +1,17 @@
 @extends('layouts.master')
-@section('title', 'BUTCHER - ASSEGAF')
-@section('page-title', 'Butcher Menu')
-@section('page-subtitle', 'Butcher Page - Administrator')
+@section('title', 'SKIN - ASSEGAF')
+@section('page-title', 'Skin Menu')
+@section('page-subtitle', 'Skin Page - Administrator')
 
 @section('konten')
 <div class="card-body">
-    <div class="card-title">Butcher</div>
+    <div class="card-title">Skin</div>
     <div class="row card-category">
         <div class="col-md-6">
-            <div>Detail Data Butchers</div>
+            <div>Detail Data Skins</div>
         </div>
         <div class="col-md-6 text-right">
-            <a href="/butcher/create" class="btn btn-primary btn-sm btn-rounded mb-2"><i class="fas fa-plus mr-2"></i> Create</a>
+            <a href="/skin/create" class="btn btn-primary btn-sm btn-rounded mb-2"><i class="fas fa-plus mr-2"></i> Create</a>
         </div>
     </div>
     <div class="table-responsive">
@@ -19,18 +19,22 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
+                    <th>Butcher</th>
+                    <th>Sheets</th>
                     <th>Price</th>
-                    <th>Skin Grade</th>
+                    <th>Meat Grade</th>
+                    <th>Meat Total</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
+                    <th>Butcher</th>
+                    <th>Sheets</th>
                     <th>Price</th>
-                    <th>Skin Grade</th>
+                    <th>Meat Grade</th>
+                    <th>Meat Total</th>
                     <th>Action</th>
                 </tr>
             </tfoot>
@@ -42,10 +46,20 @@
                 <tr>
                     <td>{{$no++}}</td>
                     <td>{{$dt->name}}</td>
-                    <td>Rp. {{number_format($dt->price)}},-</td>
-                    <td>{{$dt->skin_grade}}</td>
+                    <td>{{$dt->sheet}}</td>
+                    <td>Rp. {{number_format($dt->total_price)}},-</td>
+                    @if(isset($dt->meat_grade))
+                    <td>{{$dt->meat_grade}}</td>
+                    @else
+                    <td><i>--Data Unavailable--</i></td>
+                    @endif
+                    @if(isset($dt->total_meat))
+                    <td>{{$dt->total_meat}}</td>
+                    @else
+                    <td><i>--Data Unavailable--</i></td>
+                    @endif
                     <td>
-                        <a href="/butcher/{{$dt->id}}/edit" class="btn btn-sm btn-rounded btn-warning"><i class="fas fa-edit"></i></a>
+                        <a href="/skin/{{$dt->id}}/edit" class="btn btn-sm btn-rounded btn-warning"><i class="fas fa-edit"></i></a>
                         <a href="#" class="btn btn-sm btn-rounded btn-danger delete" data-id="{{$dt->id}}" data-name="{{$dt->name}}"><i class="fas fa-trash"></i></a>
                     </td>
                 </tr>
@@ -75,7 +89,7 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/butcher/" + data_id + "/delete"
+                    window.location = "/skin/" + data_id + "/delete"
                     swal("Data telah dihapus!", {
                         icon: "success",
                     });
