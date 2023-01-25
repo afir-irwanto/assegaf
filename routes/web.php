@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ButcherController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\MeatController;
 use App\Http\Controllers\SalesController;
 use App\Http\Controllers\SkinController;
 use Illuminate\Support\Facades\Route;
@@ -40,8 +41,24 @@ Route::get('/total_skin', [SkinController::class, 'total_skin']);
 
 Route::get('/get/details/{id}', [SkinController::class, 'getButcherDetails'])->name('getButcherDetails');
 
+Route::get('/meat', [MeatController::class, 'index']);
+Route::get('/meat/create', [MeatController::class, 'create']);
+Route::post('/meat/post', [MeatController::class, 'post']);
+
 
 Route::get('/purchases_record', [FinanceController::class, 'purchase']);
+Route::get('/purchases_record/create', [FinanceController::class, 'purchase_create']);
+Route::post('/purchases_record/post', [FinanceController::class, 'purchase_post']);
 
 
 Route::get('/sales', [SalesController::class, 'index']);
+
+Route::get('/sales_record', [FinanceController::class, 'sale']);
+Route::get('/sales_record/create', [FinanceController::class, 'sale_create']);
+Route::post('/sales_record/post', [FinanceController::class, 'sale_post']);
+
+Route::get('export-excel-csv-file/purchase/{slug}', [FinanceController::class, 'export_excel_purchase']);
+Route::get('export-excel-csv-file/sale/{slug}', [FinanceController::class, 'export_excel_sale']);
+
+Route::get('export-pdf/purchase', [FinanceController::class, 'export_pdf_purchase']);
+Route::get('export-pdf/sale', [FinanceController::class, 'export_pdf_sale']);

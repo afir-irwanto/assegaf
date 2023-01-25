@@ -6,7 +6,7 @@
     <title>@yield('title')</title>
     <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
     <link rel="icon" href="{{asset('assets/layouts/img/icon.ico')}}" type="image/x-icon" />
-
+    
     <!-- Fonts and icons -->
     <script src="{{asset('/assets/layouts/js/plugin/webfont/webfont.min.js')}}"></script>
     <script>
@@ -23,11 +23,11 @@
             }
         });
     </script>
-
+    
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{asset('assets/layouts/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/layouts/css/atlantis.min.css')}}">
-
+    
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{asset('assets/layouts/css/demo.css')}}">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -38,7 +38,7 @@
         <div class="main-header">
             <!-- Logo Header -->
             <div class="logo-header" data-background-color="blue">
-
+                
                 <a href="index.html" class="logo">
                     <img src="{{asset('assets/layouts/img/logo.svg')}}" alt="navbar brand" class="navbar-brand">
                 </a>
@@ -55,10 +55,10 @@
                 </div>
             </div>
             <!-- End Logo Header -->
-
+            
             <!-- Navbar Header -->
             <nav class="navbar navbar-header navbar-expand-lg" data-background-color="blue2">
-
+                
                 <div class="container-fluid">
                     <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                         <li class="nav-item dropdown hidden-caret">
@@ -71,9 +71,9 @@
                                 <div class="dropdown-user-scroll scrollbar-outer">
                                     <li>
                                         <?php
-
+                                        
                                         use Illuminate\Support\Facades\Auth;
-
+                                        
                                         $user_id = Auth::user()->id;
                                         ?>
                                         <a class="dropdown-item" href="/my_profile/{{$user_id}}">My Profile</a>
@@ -87,7 +87,7 @@
             </nav>
             <!-- End Navbar -->
         </div>
-
+        
         <!-- Sidebar -->
         <div class="sidebar sidebar-style-2">
             <div class="sidebar-wrapper scrollbar scrollbar-inner">
@@ -107,11 +107,23 @@
                         </div>
                     </div>
                     <ul class="nav nav-primary">
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Core</h4>
+                        </li>
                         <li class="nav-item">
                             <a href="/admin/dashboard" class="collapsed" aria-expanded="false">
                                 <i class="fas fa-home"></i>
                                 <p>Dashboard</p>
                             </a>
+                        </li>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Components</h4>
                         </li>
                         <li class="nav-item">
                             <a href="/butcher" class="collapsed" aria-expanded="false">
@@ -120,9 +132,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="/total_skin" class="collapsed" aria-expanded="false">
+                                <i class="fas fa-weight-hanging"></i>
+                                <p>Storage</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="#span1" data-toggle="collapse">
                                 <i class="fas fa-spa"></i>
-                                <p>Skins</p>
+                                <p>Items</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="span1">
@@ -133,23 +151,23 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="/total_skin">
-                                            <span class="sub-item">Total Skin</span>
+                                        <a href="/meat">
+                                            <span class="sub-item">Meat</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a href="/sales" class="collapsed" aria-expanded="false">
-                                <i class="fas fa-shopping-cart"></i>
-                                <p>Sales</p>
-                            </a>
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Income & Spend</h4>
                         </li>
                         <li class="nav-item">
                             <a href="#span2" data-toggle="collapse">
                                 <i class="fas fa-money-bill"></i>
-                                <p>Finance</p>
+                                <p>Activity</p>
                                 <span class="caret"></span>
                             </a>
                             <div class="collapse" id="span2">
@@ -164,20 +182,36 @@
                                             <span class="sub-item">Sales</span>
                                         </a>
                                     </li>
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="#span3" data-toggle="collapse">
+                                <i class="fas fa-money-bill"></i>
+                                <p>Finance</p>
+                                <span class="caret"></span>
+                            </a>
+                            <div class="collapse" id="span3">
+                                <ul class="nav nav-collapse">
                                     <li>
-                                        <a href="/finance_record">
-                                            <span class="sub-item">Finance Record</span>
+                                        <a href="/purchases_record">
+                                            <span class="sub-item">Purchases Record</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/sales_record">
+                                            <span class="sub-item">Sales Record</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>
         </div>
         <!-- End Sidebar -->
-
+        
         <div class="main-panel">
             <div class="content">
                 <div class="panel-header bg-primary-gradient">
@@ -190,6 +224,7 @@
                         </div>
                     </div>
                 </div>
+                @yield('dashboard')
                 <div class="page-inner mt--5">
                     <div class="row mt--2">
                         <div class="col-md-12">
@@ -207,40 +242,40 @@
     <script src="{{asset('assets/layouts/js/core/jquery.3.2.1.min.js')}}"></script>
     <script src="{{asset('assets/layouts/js/core/popper.min.js')}}"></script>
     <script src="{{asset('assets/layouts/js/core/bootstrap.min.js')}}"></script>
-
+    
     <!-- jQuery UI -->
     <script src="{{asset('assets/layouts/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js')}}"></script>
     <script src="{{asset('assets/layouts/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js')}}"></script>
-
+    
     <!-- jQuery Scrollbar -->
     <script src="{{asset('assets/layouts/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
-
-
+    
+    
     <!-- Chart JS -->
     <script src="{{asset('assets/layouts/js/plugin/chart.js/chart.min.js')}}"></script>
-
+    
     <!-- jQuery Sparkline -->
     <script src="{{asset('assets/layouts/js/plugin/jquery.sparkline/jquery.sparkline.min.js')}}"></script>
-
+    
     <!-- Chart Circle -->
     <script src="{{asset('assets/layouts/js/plugin/chart-circle/circles.min.js')}}"></script>
-
+    
     <!-- Datatables -->
     <script src="{{asset('assets/layouts/js/plugin/datatables/datatables.min.js')}}"></script>
-
+    
     <!-- Bootstrap Notify -->
     <script src="{{asset('assets/layouts/js/plugin/bootstrap-notify/bootstrap-notify.min.js')}}"></script>
-
+    
     <!-- jQuery Vector Maps -->
     <script src="{{asset('assets/layouts/js/plugin/jqvmap/jquery.vmap.min.js')}}"></script>
     <script src="{{asset('assets/layouts/js/plugin/jqvmap/maps/jquery.vmap.world.js')}}"></script>
-
+    
     <!-- Sweet Alert -->
     <script src="{{asset('assets/layouts/js/plugin/sweetalert/sweetalert.min.js')}}"></script>
-
+    
     <!-- Atlantis JS -->
     <script src="{{asset('assets/layouts/js/atlantis.min.js')}}"></script>
-
+    
     <!-- Atlantis DEMO methods, don't include it in your project! -->
     <script src="{{asset('assets/layouts/js/setting-demo.js')}}"></script>
     <script src="{{asset('assets/layouts/js/demo.js')}}"></script>
@@ -259,7 +294,7 @@
             styleWrapper: true,
             styleText: true
         })
-
+        
         Circles.create({
             id: 'circles-2',
             radius: 45,
@@ -274,7 +309,7 @@
             styleWrapper: true,
             styleText: true
         })
-
+        
         Circles.create({
             id: 'circles-3',
             radius: 45,
@@ -289,9 +324,9 @@
             styleWrapper: true,
             styleText: true
         })
-
+        
         var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
-
+        
         var mytotalIncomeChart = new Chart(totalIncomeChart, {
             type: 'bar',
             data: {
@@ -328,7 +363,7 @@
                 },
             }
         });
-
+        
         $('#lineChart').sparkline([105, 103, 123, 100, 95, 105, 115], {
             type: 'line',
             height: '70',

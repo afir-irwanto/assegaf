@@ -10,9 +10,11 @@
         <div class="col-md-6">
             <div>Detail Data Skins</div>
         </div>
+        @if(Auth::user()->role == 'admin')
         <div class="col-md-6 text-right">
             <a href="/skin/create" class="btn btn-primary btn-sm btn-rounded mb-2"><i class="fas fa-plus mr-2"></i> Create</a>
         </div>
+        @endif
     </div>
     <div class="table-responsive">
         <table id="basic-datatables" class="display table table-striped table-hover">
@@ -24,7 +26,9 @@
                     <th>Price</th>
                     <th>Meat Grade</th>
                     <th>Meat Total</th>
+                    @if(Auth::user()->role == 'admin')
                     <th>Action</th>
+                    @endif
                 </tr>
             </thead>
             <tfoot>
@@ -35,7 +39,9 @@
                     <th>Price</th>
                     <th>Meat Grade</th>
                     <th>Meat Total</th>
+                    @if(Auth::user()->role == 'admin')
                     <th>Action</th>
+                    @endif
                 </tr>
             </tfoot>
             <tbody>
@@ -58,10 +64,12 @@
                     @else
                     <td><i>--Data Unavailable--</i></td>
                     @endif
+                    @if(Auth::user()->role == 'admin')
                     <td>
-                        <a href="/skin/{{$dt->id}}/edit" class="btn btn-sm btn-rounded btn-warning"><i class="fas fa-edit"></i></a>
+                        {{-- <a href="/skin/{{$dt->id}}/edit" class="btn btn-sm btn-rounded btn-warning"><i class="fas fa-edit"></i></a> --}}
                         <a href="#" class="btn btn-sm btn-rounded btn-danger delete" data-id="{{$dt->id}}" data-name="{{$dt->name}}"><i class="fas fa-trash"></i></a>
                     </td>
+                    @endif
                 </tr>
                 @endforeach
             </tbody>

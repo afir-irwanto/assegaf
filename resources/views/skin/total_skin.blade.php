@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('title', 'SKIN - ASSEGAF')
-@section('page-title', 'Skin Menu')
-@section('page-subtitle', 'Skin Page - Administrator')
+@section('title', 'STORAGE - ASSEGAF')
+@section('page-title', 'Storage Menu')
+@section('page-subtitle', 'Total Storage Data - Stuff')
 
 @section('konten')
 <div class="card-body">
-    <div class="card-title">Skin</div>
+    <div class="card-title">Storage</div>
     <div class="row mt-5 mb-5">
         <div class="col-md-6">
             <div class="card card-stats card-primary card-round">
@@ -38,7 +38,7 @@
                         <div class="col-9 col-stats">
                             <div class="numbers">
                                 <p class="card-category">Total Meat</p>
-                                <h4 class="card-title">1,294</h4>
+                                <h4 class="card-title">{{ $meat->total_meat }}</h4>
                             </div>
                         </div>
                     </div>

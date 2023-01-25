@@ -8,7 +8,10 @@ use App\Models\TotalSkin;
 use Illuminate\Http\Request;
 use Validator;
 use Alert;
+use App\Models\Meat;
 use App\Models\Purchase;
+use App\Models\TotalMeat;
+use Illuminate\Support\Facades\DB;
 
 class SkinController extends Controller
 {
@@ -47,7 +50,9 @@ class SkinController extends Controller
             $input = $request->all();
             $validasi = [
                 'butcher_id' => 'required',
-                'sheet' => 'required|numeric|min:0'
+                'sheet' => 'required|numeric|min:0',
+                'total_meat' => 'numeric',
+                'meat_price' => 'numeric'
             ];
             $validation = Validator::make($input, $validasi);
             if ($validation->fails()) {
@@ -73,7 +78,26 @@ class SkinController extends Controller
                 ]);
 
                 Purchase::create([
-                    'total_purchase' => intval($request->sheet) * intval($butcher_price)
+                    'total_purchase' => intval($request->sheet) * intval($butcher_price),
+                    'detail' => 'Skin Purchase'
+                ]);
+
+                $meat_input = [[$request->meat_grade],[$request->total_meat],[$request->meat_price]];
+                if(isset($meat_input)) {
+                    Meat::create([
+                        'butcher_id' => $request->butcher_id,
+                        'weight' => $request->total_meat,
+                        'price' => $request->meat_price,
+                        'meat_grade' => $request->meat_grade,
+                        'total_price' => intval($request->total_meat) * intval($request->meat_price)
+                    ]);
+                };
+
+                $total_meat = TotalMeat::select('id', 'total_meat')->first();
+                $total_meat_awal = $total_meat['total_meat'];
+                
+                $total_meat->update([
+                    'total_meat' => intval($total_meat_awal) + intval($request->total_meat)
                 ]);
 
                 Alert::success('Success', 'Data Created Successfully!');
@@ -85,6 +109,7 @@ class SkinController extends Controller
     public function total_skin()
     {
         $data = TotalSkin::select('id','total_skin')->first();
-        return view('skin.total_skin',compact('data'));
+        $meat = TotalMeat::select('id','total_meat')->first();
+        return view('skin.total_skin', compact('data', 'meat'));
     }
 }

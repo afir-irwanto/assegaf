@@ -1,18 +1,18 @@
 @extends('layouts.master')
-@section('title', 'BUTCHER - ASSEGAF')
-@section('page-title', 'Butcher Menu')
-@section('page-subtitle', 'Butcher Page - Administrator')
+@section('title', 'MEAT - ASSEGAF')
+@section('page-title', 'Meat Menu')
+@section('page-subtitle', 'Meat Page - Administrator')
 
 @section('konten')
 <div class="card-body">
-    <div class="card-title">Butcher</div>
+    <div class="card-title">Meat</div>
     <div class="row card-category">
         <div class="col-md-6">
-            <div>Detail Data Butchers</div>
+            <div>Detail Data Meats</div>
         </div>
         @if(Auth::user()->role == 'admin')
         <div class="col-md-6 text-right">
-            <a href="/butcher/create" class="btn btn-primary btn-sm btn-rounded mb-2"><i class="fas fa-plus mr-2"></i> Create</a>
+            <a href="/meat/create" class="btn btn-primary btn-sm btn-rounded mb-2"><i class="fas fa-plus mr-2"></i> Create</a>
         </div>
         @endif
     </div>
@@ -21,9 +21,11 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
+                    <th>Butcher</th>
+                    <th>Weight</th>
                     <th>Price</th>
-                    <th>Skin Grade</th>
+                    <th>Meat Grade</th>
+                    <th>Total Price</th>
                     @if(Auth::user()->role == 'admin')
                     <th>Action</th>
                     @endif
@@ -32,9 +34,11 @@
             <tfoot>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
+                    <th>Butcher</th>
+                    <th>Weight</th>
                     <th>Price</th>
-                    <th>Skin Grade</th>
+                    <th>Meat Grade</th>
+                    <th>Total Price</th>
                     @if(Auth::user()->role == 'admin')
                     <th>Action</th>
                     @endif
@@ -44,15 +48,25 @@
                 @php
                 $no = 1;
                 @endphp
-                @foreach($data as $dt)
+                @foreach($meats as $dt)
                 <tr>
                     <td>{{$no++}}</td>
                     <td>{{$dt->name}}</td>
+                    <td>{{$dt->weight}}</td>
                     <td>Rp. {{number_format($dt->price)}},-</td>
-                    <td>{{$dt->skin_grade}}</td>
+                    @if(isset($dt->meat_grade))
+                    <td>{{$dt->meat_grade}}</td>
+                    @else
+                    <td><i>--Data Unavailable--</i></td>
+                    @endif
+                    @if(isset($dt->total_price))
+                    <td>Rp. {{number_format($dt->total_price)}},-</td>
+                    @else
+                    <td><i>--Data Unavailable--</i></td>
+                    @endif
                     @if(Auth::user()->role == 'admin')
                     <td>
-                        <a href="/butcher/{{$dt->id}}/edit" class="btn btn-sm btn-rounded btn-warning"><i class="fas fa-edit"></i></a>
+                        {{-- <a href="/meat/{{$dt->id}}/edit" class="btn btn-sm btn-rounded btn-warning"><i class="fas fa-edit"></i></a> --}}
                         <a href="#" class="btn btn-sm btn-rounded btn-danger delete" data-id="{{$dt->id}}" data-name="{{$dt->name}}"><i class="fas fa-trash"></i></a>
                     </td>
                     @endif
@@ -83,7 +97,7 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/butcher/" + data_id + "/delete"
+                    window.location = "/meat/" + data_id + "/delete"
                     swal("Data telah dihapus!", {
                         icon: "success",
                     });

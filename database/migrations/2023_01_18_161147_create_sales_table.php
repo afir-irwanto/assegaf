@@ -15,6 +15,8 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
+            $table->enum('item', ['Skin','Meat']);
+            $table->enum('customer', ['General','Company']);
             $table->integer('quantity');
             $table->integer('price');
             $table->integer('total_price');

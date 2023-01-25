@@ -13,6 +13,6 @@ class Purchase extends Model
 
     protected $table = 'purchases';
     protected $fillable = [
-        'total_purchase','deleted_at'
+        'total_purchase','deleted_at','detail','amount','price'
     ];
 }

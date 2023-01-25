@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TotalMeat extends Model
 {
     use HasFactory;
+
+    protected $table = 'total_meat';
+    protected $fillable = [
+        'total_meat'
+    ];
 }

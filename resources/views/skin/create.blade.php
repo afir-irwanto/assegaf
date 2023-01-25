@@ -43,7 +43,7 @@
                         <input type="number" id="total_price" class="form-control" name="total_price" readonly>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Meat Grade</label><span class="ml-2" style="color: red; font-size:10px;">*Nullable</span>
                                 <select name="meat_grade" class="form-control">
@@ -53,10 +53,16 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="">Total Meat (kg)</label><span class="ml-2" style="color: red; font-size:10px;">*Nullable</span>
-                                <input type="number" class="form-control" id="total_meat">
+                                <input type="number" class="form-control" id="total_meat" name="total_meat">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="">Meat Price</label><span class="ml-2" style="color: red; font-size:10px;">*Nullable</span>
+                                <input type="number" class="form-control" id="meat_price" name="meat_price">
                             </div>
                         </div>
                     </div>

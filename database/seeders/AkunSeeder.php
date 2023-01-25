@@ -14,10 +14,20 @@ class AkunSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        $data = [[
             'name' => 'Administrator ASSEGAF',
             'email' => 'admin@assegaf.com',
-            'password' => bcrypt('admin_assegaf')
-        ]);
+            'password' => bcrypt('admin_assegaf'),
+            'role' => 'admin'
+        ],[
+            'name' => 'User ASSEGAF',
+            'email' => 'user@assegaf.com',
+            'password' => bcrypt('user_assegaf'),
+            'role' => 'user'
+        ]];
+
+        foreach($data as $dt){
+            User::create($dt);
+        };
     }
 }

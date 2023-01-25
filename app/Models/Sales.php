@@ -13,6 +13,6 @@ class Sales extends Model
 
     protected $table = 'sales';
     protected $fillable = [
-        'quantity','price','total_price','deleted_at'
+        'quantity','price','total_price','deleted_at','item','customer'
     ];
 }
